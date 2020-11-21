@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        // 1.for先判断再执行
+        let num = 5;
+        for (let i = 0; i < num; i++) {
+            if (i === 3) {
+                console.log(i);
+            }
+        }
+
+        // 2.while 先判断再执行
+        while (num > 4) {
+            console.log(num);
+            num--;
+        }
+
+        // 3.do-while 先执行在判断
+        num = 5;
+        do {
+            console.log(num);
+            num++;
+        } while (num < 6);
+
+        // 4.for-in  对数组或者对象的属性进行循环操作
+        let arr = ['a','b','c'];
+        let ob = {
+            name: '刘备',
+            age: 28
+        }
+        for (const item in arr){
+            // item为 key 字符串'1'
+            if(item === '1'){
+                console.log(arr[item])
+            }
+        }
+
+        for(const item in ob){
+            if(item === 'name'){
+                console.log(ob[item]);
+            }
+        }
+
+        // 5.for-of 数组、Set 和 Map 结构、某些类似数组的对象（如arguments对象、DOM NodeList 对象）
+        // Generator 对象，以及字符串
+        for(const item of arr){
+            // 此处item与for-in item不同，item为数组元素
+            if(item === 'b'){
+                break;
+            }
+            console.log(item);
+        }
+
+        // 对象不可用for-of遍历
+        let m = new Map();
+        m.set('key1','vlaue1');
+        m.set('test','test value');
+        for(const item of m){
+            console.log('--------------------' + item)
+        }
+
+        // 6.forEach 针对每一个元素执行提供的函数 ;不能使用 break、continue 跳出循环 只能抛异常跳出循环
+        arr.forEach(item=>{
+            if(item === 'b'){
+                console.log(item);
+            }
+        });
+
+        // 7.map 方法创建一个新数组，其结果是该数组中的每个元素都调用一个提供的函数后返回的结果
+        let arr2 = arr.map(item=>{
+            // map不return 返回元素全是undefined的数组，不改变原数组arr
+            return item + '1';
+        });
+        console.log(arr2 )
+
+
+    </script>
+</body>
+
+</html>
